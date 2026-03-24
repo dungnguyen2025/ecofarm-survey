@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>EcoFarm Survey - Khảo sát Nông nghiệp Sinh thái</title>
     <style>
         * {
@@ -808,8 +811,8 @@
     </div>
 
     <script>
-        // *** CẤU HÌNH EMAIL NHẬN DỮ LIỆU - THAY ĐỔI EMAIL NÀY ***
-        const ADMIN_EMAIL = "your-email@example.com"; // <-- THAY ĐỔI EMAIL NÀY!
+        // Email nhận dữ liệu - ĐÃ CÀI SẴN
+        const ADMIN_EMAIL = "tridungvietnam@gmail.com";
 
         // Hiển thị/ẩn nhóm câu hỏi
         function showGroup(groupType) {
@@ -849,11 +852,6 @@
         // Xử lý submit form
         document.getElementById('ecoFarmForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            if (ADMIN_EMAIL === "your-email@example.com") {
-                alert('⚠️ CẢNH BÁO: Bạn chưa thay đổi email nhận dữ liệu!\n\nVui lòng sửa dòng:\nconst ADMIN_EMAIL = "your-email@example.com";\n\nThành email thật của bạn trong code!');
-                return;
-            }
             
             const formData = new FormData(this);
             const response = {
