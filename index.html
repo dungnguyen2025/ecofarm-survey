@@ -197,19 +197,6 @@
             transition: width 0.3s ease;
         }
 
-        .email-config {
-            background: #e3f2fd;
-            border: 2px solid #2196f3;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
-        .email-config h3 {
-            color: #1976d2;
-            margin-bottom: 15px;
-        }
-
         .success-message {
             background: #d4edda;
             border: 2px solid #28a745;
@@ -250,18 +237,6 @@
         <div class="header">
             <h1>🌱 EcoFarm Survey</h1>
             <p>Khảo sát Nông nghiệp Sinh thái</p>
-        </div>
-
-        <!-- CẤU HÌNH EMAIL -->
-        <div class="email-config">
-            <h3>📧 Cấu hình nhận dữ liệu</h3>
-            <div class="form-group">
-                <label for="adminEmail">Email nhận dữ liệu khảo sát:</label>
-                <input type="email" id="adminEmail" value="your-email@example.com" placeholder="Nhập email của bạn">
-                <small style="color: #666; display: block; margin-top: 5px;">
-                    Thay đổi email này thành email của bạn để nhận dữ liệu khảo sát
-                </small>
-            </div>
         </div>
 
         <div class="progress-bar">
@@ -827,12 +802,15 @@
             </div>
 
             <div class="submit-section">
-                <button type="submit" class="btn-submit">📧 Gửi khảo sát qua Email</button>
+                <button type="submit" class="btn-submit">📧 Gửi khảo sát</button>
             </div>
         </form>
     </div>
 
     <script>
+        // *** CẤU HÌNH EMAIL NHẬN DỮ LIỆU - THAY ĐỔI EMAIL NÀY ***
+        const ADMIN_EMAIL = "your-email@example.com"; // <-- THAY ĐỔI EMAIL NÀY!
+
         // Hiển thị/ẩn nhóm câu hỏi
         function showGroup(groupType) {
             // Ẩn tất cả sections
@@ -872,9 +850,8 @@
         document.getElementById('ecoFarmForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const adminEmail = document.getElementById('adminEmail').value;
-            if (!adminEmail || !adminEmail.includes('@')) {
-                alert('Vui lòng nhập email hợp lệ để nhận dữ liệu!');
+            if (ADMIN_EMAIL === "your-email@example.com") {
+                alert('⚠️ CẢNH BÁO: Bạn chưa thay đổi email nhận dữ liệu!\n\nVui lòng sửa dòng:\nconst ADMIN_EMAIL = "your-email@example.com";\n\nThành email thật của bạn trong code!');
                 return;
             }
             
@@ -959,7 +936,7 @@
             // Tạo mailto link
             const subject = encodeURIComponent(`EcoFarm Survey Response - ${response.data.fullName || 'Anonymous'}`);
             const body = encodeURIComponent(emailBody);
-            const mailtoLink = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
+            const mailtoLink = `mailto:${tridungvietnam@gmail.com}?subject=${subject}&body=${body}`;
 
             // Mở email client
             window.location.href = mailtoLink;
